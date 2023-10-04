@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Lato";
+        src: url("./font/Lato-Regular.ttf");
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: "Lato";
+      }
+      body {
+        background: #fefefe;
+        position: relative;
+      }
+
+      .container {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.8s opacity;
+      }
+
+      #loading_percent {
+        text-align: center;
+        font-size: 35px;
+      }
+
+      #loading,
+      #cover {
+        /* position: fixed;
+        left: 0;
+        top: 0; */
+        /* background: red; */
+        position: absolute;
+      }
+      @media (max-resolution: 120dpi) {
+        .container {
+          transform: scale(2.2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="loading" width="800" height="800"></canvas>
+      <canvas id="cover" width="800" height="800"></canvas>
+    </div>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      setup();
+      setInterval(() => {
+        draw();
+      }, 17);
+      (() => {
+        document.querySelector(".container").style.opacity = 1;
+      })();
+    </script>
+  </body>
+</html>
